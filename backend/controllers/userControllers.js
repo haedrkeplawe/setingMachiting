@@ -34,7 +34,7 @@ const Login = async (req, res) => {
     jwt.sign({ userID: findUser._id, username }, "haedr", {}, (err, token) => {
       if (err) throw err;
 
-      return res.cookie("token", token).status(200).json({ id: findUser._id });
+      return res.cookie("token", token,{ sameSite: "none", secure: true }).status(200).json({ id: findUser._id });
     });
   } catch (error) {
     res.status(400).json(error);
@@ -54,7 +54,7 @@ const profile = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  return res.cookie("token", "").status(200).json("ok");
+  return res.cookie("token", "",{ sameSite: "none", secure: true }).status(200).json("ok");
 };
 
 module.exports = { Register, Login, profile, logout };
