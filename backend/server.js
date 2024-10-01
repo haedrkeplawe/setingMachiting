@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "http://localhost:test"],
+    origin: ["http://localhost:3000", "https://sitingmarti.netlify.app"],
   })
 );
 app.use(cookieParser());
